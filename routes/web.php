@@ -3,6 +3,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +24,15 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
+route::get('/login',[LoginController::class,'index']);
 route::post('/login',[LoginController::class,'authenticate']);
+route::post('/logout',[LoginController::class,'logout']);
+
+route::get('/admin/dashboard',[DashboardController::class,'index']);
+// route::get('/admin/user',[UserController::class,'create']);
+// route::post('/admin/user',[UserController::class,'store']);
+// route::get('/admin/user/edit',[UserController::class,'edit']);
+// route::get('/admin/user/edit',[UserController::class,'update']);
+// route::get('/admin/user/edit',[UserController::class,'destroy']);
+
+route::resource('admin/user',UserController::class);
