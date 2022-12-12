@@ -12,8 +12,8 @@
             <div class="card-body">
                 <form action="/admin/user" method="POST">
                     @csrf
-                    <input type="hidden" name="is_approve" value="Approved">
-                    <input type="hidden" name="password_change" value="true">
+                    {{-- <input type="hidden" name="is_approve" value="Approved">
+                    <input type="hidden" name="password_change" value="true"> --}}
                     <div class="row mb-4">
                         <label class="col-sm-2 col-form-label" for="name">Nama Lengkap</label>
                         <div class="col-sm-10">

@@ -154,6 +154,17 @@
             </li>
 
             <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Create link</span>
+            </li>
+
+            <li class="menu-item {{ Request::is('admin/link*') ? 'active' : '' }}">
+              <a href="/admin/link" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-link"></i>
+                <div data-i18n="Analytics">Links</div>
+              </a>
+            </li>
+
+            <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Pengguna</span>
             </li>
 
@@ -163,6 +174,8 @@
                 <div data-i18n="Analytics">User</div>
               </a>
             </li>
+
+
 
             <!-- Layouts -->
             <li class="menu-item">
@@ -335,7 +348,7 @@
             swal({
                 icon: "warning",
                 title: "Are you sure?",
-                text: "Save this user definition?",
+                text: "You want to delete this item?",
                 buttons: true,
                 dangerMode: true
             }).then((isConfirm) => {
@@ -343,7 +356,7 @@
                     form.submit();
                     swal({
                         icon: "success",
-                        title: data + ' successfully updated!',
+                        title: data + ' successfully deleted!',
                     });
                 }
             });

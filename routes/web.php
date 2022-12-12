@@ -2,9 +2,10 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\LinkController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +37,4 @@ route::get('/admin/dashboard',[DashboardController::class,'index']);
 // route::get('/admin/user/edit',[UserController::class,'destroy']);
 
 route::resource('admin/user',UserController::class);
+route::resource('admin/link',LinkController::class);
