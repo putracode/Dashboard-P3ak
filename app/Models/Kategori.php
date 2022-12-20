@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Link extends Model
+class Kategori extends Model
 {
     use HasFactory;
 
     protected $guarded = [''];
-    protected $table = 'links';
+    protected $table = 'kategoris';
 
-    protected function kategori(){
-        return $this->belongsTo(Kategori::class);
+    protected function link(){
+        return $this->hasMany(Link::class);
     }
 }

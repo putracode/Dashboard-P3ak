@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Link;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class LinkController extends Controller
 {
@@ -25,7 +27,7 @@ class LinkController extends Controller
      */
     public function create()
     {
-        return view('admin.link.create');
+        return view('admin.link.create',['kategori' => Kategori::all()]);
     }
 
     /**
@@ -39,11 +41,33 @@ class LinkController extends Controller
         $validasi = $this->validate($request,[
             'title' => ['required'],
             'url'   => ['required'],
-            // 'kategori'   => ['required']
+            'kategori_id'   => ['required']
         ]);
 
+        if($request->file('url')){
+            $validasi['url'] = $request->file('url')->store('pdf','public');
+        }
+        
+        // if($request->file('url')){
+        //     $validasi['url'] = Storage::putFile('public', $request->file('url'));
+        // }
+        // $rules = [
+        //     'title' => ['required'],
+        //     'url'   => ['required'],
+        //     'kategori'   => ['required']
+        // ];
+
+        // if($request->file('url')){
+        //     $rules['url'] = ['required'];
+        //     $rules['url'] = $request->file('img')->store('pdf');
+        // }else{
+        //     $rules['url'] = ['required'];
+        // }
+
+        // $validasi = $request->validate($rules);
+
         link::create($validasi);
-        return redirect('/admin/link')->with('success','User added successfully!');
+        return redirect('/admin/link')->with('success','Data added successfully!');
     }
 
     /**
@@ -65,7 +89,7 @@ class LinkController extends Controller
      */
     public function edit(Link $link)
     {
-        return view('admin.link.edit',['link' => link::all()]);
+        return view('admin.link.edit',['link' => $link, 'kategori' => kategori::all()]);
     }
 
     /**
@@ -83,8 +107,15 @@ class LinkController extends Controller
             'kategori' => ['required'],
         ]);
 
+        if($request->file('url')){
+            if($request->lama){
+                Storage::delete($request->lama);
+            }
+            $validasi['url'] = $request->file('url')->store('pdf');
+        }
+
         link::where('id',$link->id)->update($validasi);
-        return redirect('/admin/link')->with('success','Link update successfully!');
+        return redirect('/admin/link')->with('success','Data update successfully!');
     }
 
     /**
@@ -95,7 +126,10 @@ class LinkController extends Controller
      */
     public function destroy(Link $link)
     {
+        if($link->url){
+            Storage::delete($link->url);
+        }
         link::destroy($link->id);
-        return redirect('/admin/link')->with('success','Link successfully deleted!');
+        return redirect('/admin/link')->with('success','Data successfully deleted!');
     }
 }

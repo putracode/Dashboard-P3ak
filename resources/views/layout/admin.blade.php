@@ -164,6 +164,20 @@
               </a>
             </li>
 
+            <li class="menu-item {{ Request::is('admin/kategori*') ? 'active' : '' }}">
+              <a href="/admin/kategori" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-category"></i>
+                <div data-i18n="Analytics">Kategori</div>
+              </a>
+            </li>
+
+            <li class="menu-item {{ Request::is('admin/galeri*') ? 'active' : '' }}">
+              <a href="/admin/galeri" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-image"></i>
+                <div data-i18n="Analytics">Galeri</div>
+              </a>
+            </li>
+
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Pengguna</span>
             </li>
@@ -178,7 +192,7 @@
 
 
             <!-- Layouts -->
-            <li class="menu-item">
+            {{-- <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Layouts">Layouts</div>
@@ -211,7 +225,7 @@
                   </a>
                 </li>
               </ul>
-            </li>
+            </li> --}}
 
           </ul>
         </aside>
