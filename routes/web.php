@@ -1,14 +1,17 @@
 <?php
 
 
+use App\Models\Highlight;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\App\HomeController;
 use App\Http\Controllers\Admin\LinkController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\GaleriController;
+use App\Http\Controllers\Admin\AplikasiController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\HighlightController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +44,5 @@ route::resource('admin/user',UserController::class);
 route::resource('admin/link',LinkController::class);
 route::resource('admin/kategori',KategoriController::class);
 route::resource('admin/galeri',GaleriController::class);
+route::resource('admin/highlight',HighlightController::class);
+route::resource('admin/aplikasi',AplikasiController::class);

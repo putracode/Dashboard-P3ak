@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Aplikasi;
+use App\Models\Highlight;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -27,6 +30,83 @@ class DatabaseSeeder extends Seeder
             // 'role' => 'admin',
             'email' => 'saputra@gmail.com',
             'password' => bcrypt('password')
+        ]);
+
+        Highlight::create([
+            'title' => 'Dolorem ist laurent',
+            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
+        ]);
+        Highlight::create([
+            'title' => 'Dolorem ist laurent',
+            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
+        ]);
+        Highlight::create([
+            'title' => 'Dolorem ist laurent',
+            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
+        ]);
+        Highlight::create([
+            'title' => 'Dolorem ist laurent',
+            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
+        ]);
+        Highlight::create([
+            'title' => 'Dolorem ist laurent',
+            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
+        ]);
+        Highlight::create([
+            'title' => 'Dolorem ist laurent',
+            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
+        ]);
+        Highlight::create([
+            'title' => 'Dolorem ist laurent',
+            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
+        ]);
+        Highlight::create([
+            'title' => 'Dolorem ist laurent',
+            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
+        ]);
+        Highlight::create([
+            'title' => 'Dolorem ist laurent',
+            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
+        ]);
+        Highlight::create([
+            'title' => 'Dolorem ist laurent',
+            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
+        ]);
+        Aplikasi::create([
+            'title' => 'Dolorem ist laurent',
+            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
+        ]);
+        Aplikasi::create([
+            'title' => 'Dolorem ist laurent',
+            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
+        ]);
+        Aplikasi::create([
+            'title' => 'Dolorem ist laurent',
+            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
+        ]);
+        Aplikasi::create([
+            'title' => 'Dolorem ist laurent',
+            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
+        ]);
+        Aplikasi::create([
+            'title' => 'Dolorem ist laurent',
+            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
+        ]);
+        Aplikasi::create([
+            'title' => 'Dolorem ist laurent',
+            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
+        ]);
+        Aplikasi::create([
+            'title' => 'Dolorem ist laurent',
+            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
+        ]);
+        Aplikasi::create([
+            'title' => 'Dolorem ist laurent',
+            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
+        ]);
+        Aplikasi::create([
+            'title' => 'Dolorem ist laurent',
+            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
         ]);
     }
 }

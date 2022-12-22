@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Link;
-use App\Models\Kategori;
+use App\Models\Highlight;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
-class LinkController extends Controller
+class HighlightController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +16,7 @@ class LinkController extends Controller
      */
     public function index()
     {
-        return view('admin.link.index',['link' => link::all()]);
+        return view('admin.highlight.index',['highlight' => Highlight::all()]);
     }
 
     /**
@@ -27,7 +26,7 @@ class LinkController extends Controller
      */
     public function create()
     {
-        return view('admin.link.create',['kategori' => Kategori::all()]);
+        return view('admin.highlight.create');
     }
 
     /**
@@ -39,31 +38,25 @@ class LinkController extends Controller
     public function store(Request $request)
     {
         $validasi = $this->validate($request,[
-            'title' => ['required'],
-            'url'   => ['required'],
-            'kategori_id'   => ['required']
+            'title' => 'required',
+            'url' => 'required',
         ]);
 
         if($request->file('url')){
-            
-            
-            
             $validasi['url'] = $request->file('url')->store('file','public');
-            $filename = 'storage/'.$validasi['url'];
-            $validasi['url'] = $filename;
         }
 
-        link::create($validasi);
-        return redirect('/admin/link')->with('success','Data added successfully!');
+        Highlight::create($validasi);
+        return redirect('/admin/highlight')->with('success','Data added succesfully!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Link  $link
+     * @param  \App\Models\Highlight  $highlight
      * @return \Illuminate\Http\Response
      */
-    public function show(Link $link)
+    public function show(Highlight $highlight)
     {
         //
     }
@@ -71,27 +64,26 @@ class LinkController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Link  $link
+     * @param  \App\Models\Highlight  $highlight
      * @return \Illuminate\Http\Response
      */
-    public function edit(Link $link)
+    public function edit(Highlight $highlight)
     {
-        return view('admin.link.edit',['link' => $link, 'kategori' => kategori::all()]);
+        return view('admin.highlight.edit',['highlight' => $highlight]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Link  $link
+     * @param  \App\Models\Highlight  $highlight
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Link $link)
+    public function update(Request $request, Highlight $highlight)
     {
         $validasi = $this->validate($request,[
-            'title' => ['required'],
-            'url' => ['required'],
-            'kategori' => ['required'],
+            'title' => 'required',
+            'url' => 'required',
         ]);
 
         if($request->file('url')){
@@ -101,22 +93,19 @@ class LinkController extends Controller
             $validasi['url'] = $request->file('url')->store('file','public');
         }
 
-        link::where('id',$link->id)->update($validasi);
-        return redirect('/admin/link')->with('success','Data update successfully!');
+        Highlight::where('id',$highlight->id)->update($validasi);
+        return redirect('/admin/highlight')->with('success','Data update succesfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Link  $link
+     * @param  \App\Models\Highlight  $highlight
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Link $link)
+    public function destroy(Highlight $highlight)
     {
-        if($link->url){
-            Storage::delete($link->url);
-        }
-        link::destroy($link->id);
-        return redirect('/admin/link')->with('success','Data successfully deleted!');
+        Highlight::destroy($highlight->id);
+        return redirect('/admin/highlight')->with('success','Data succesfully deleted!');
     }
 }

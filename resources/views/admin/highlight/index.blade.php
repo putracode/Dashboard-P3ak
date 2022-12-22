@@ -15,8 +15,8 @@
 @section('content')
 <div class="card p-4">
     <div class=" d-flex justify-content-between align-items-center pb-3">
-        <h5 class="p-0 m-0">Links</h5>
-        <a href="/admin/link/create" class="btn-sm btn-primary float-end px-4 ">Create</a>
+        <h5 class="p-0 m-0">Highlight</h5>
+        <a href="/admin/highlight/create" class="btn-sm btn-primary float-end px-4 ">Create</a>
     </div>
 
     <div class="table-responsive text-nowrap">
@@ -25,29 +25,25 @@
                 <tr class="text-nowrap">
                     <th>ID</th>
                     <th>Title</th>
-                    {{-- <th>Kategori</th> --}}
                     <th>Url</th>
-                    <th>Kategori</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody class="table-border-bottom-0">
-                @foreach ($link as $row)
+                @foreach ($highlight as $row)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
 
                     <td>{{ $row->title }}</td>
 
-                    @if (file_exists($row->url))
-                        <td><a target="_blank" href="{{ asset($row->url) }}">PDF</a> </td>
+                    @if (file_exists('storage/' . $row->url))
+                        <td><a target="_blank" href="{{ asset('storage/' . $row->url) }}">File</a> </td>
                     @else
                         <td><a target="_blank" href="{{ $row->url }}">{{ $row->url }}</a></td>
                     @endif
-                    {{-- <td>{{ $row->kategori }}</td> --}}
-
-                    <td>{{ $row->kategori->kategori }}</td>
+  
                     <td>
-                        <a href="/admin/link/{{ $row->id }}/edit">
+                        <a href="/admin/highlight/{{ $row->id }}/edit">
                             <button type="button" class="btn btn-icon  btn-warning ">
                                 <svg xmlns="http://www.w3.org/2000/svg" role="img" width="1em" height="1em"
                                     viewBox="0 0 24 24">
@@ -57,23 +53,11 @@
                                 </svg>
                             </button>
                         </a>
-                        {{-- <a href="#" onclick="buttonConfirm({{ $row->id }})" data-name="link" id="confirmbutton">
-                            <button type="button" class="btn btn-icon btn-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" role="img" width="1em" height="1em"
-                                    viewBox="0 0 24 24">
-                                    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M3 6h18" />
-                                        <path
-                                            d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                                    </g>
-                                </svg>
-                            </button>
-                        </a> --}}
-                        <form action="/admin/link/{{ $row->id }}" method="POST" style="display: inline">
+
+                        <form action="/admin/highlight/{{ $row->id }}" method="POST" style="display: inline">
                             @csrf
                             @method('delete')
-                            <button type="submit" class="btn btn-icon btn-danger confirmdelete" data-name="Link" id="confirmbutton">
+                            <button type="submit" class="btn btn-icon btn-danger confirmdelete" data-name="Highlight" id="confirmbutton">
                                 <svg xmlns="http://www.w3.org/2000/svg" role="img" width="1em" height="1em"
                                         viewBox="0 0 24 24">
                                         <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

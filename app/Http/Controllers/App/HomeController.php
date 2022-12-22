@@ -6,13 +6,15 @@ use App\Models\Link;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Aplikasi;
 use App\Models\Galeri;
+use App\Models\Highlight;
 use Symfony\Component\Console\Input\Input;
 
 class HomeController extends Controller
 {
     public function index(){
-        return view('app.home',['link' => Link::all(), 'kategori' => Kategori::all(), 'galeri' => Galeri::all()]);
+        return view('app.home',['link' => Link::all(), 'kategori' => Kategori::all(), 'galeri' => Galeri::all(), 'highlight' => Highlight::all(), 'aplikasi' => Aplikasi::all()]);
     }
 
     public function modal(Request $request){
