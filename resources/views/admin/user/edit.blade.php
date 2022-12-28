@@ -26,7 +26,7 @@
                             @enderror
                         </div>
                     </div>
-                    {{-- <div class="row mb-4">
+                    <div class="row mb-4">
                         <label for="role" class="form-label col-sm-2 col-form-label">Role</label>
                         <div class="col-sm-10">
                             <select class="form-select @error('role') is-invalid @enderror" id="role" name="role">
@@ -45,7 +45,7 @@
                             </div>
                             @enderror
                         </div>
-                    </div> --}}
+                    </div>
                     <div class="row mb-4">
                         <label class="col-sm-2 col-form-label" for="email">Email</label>
                         <div class="col-sm-10">
@@ -70,9 +70,11 @@
                     </div> --}}
                     
                     <div class="row justify-content-end">
-                        <div class="col-sm-10">
+                        <div class="col-sm-12">
                             <button type="submit" class="btn btn-primary float-end px-5 btn-sm">Save</button>
                             <a href="/admin/user" class="btn btn-danger px-5 me-2 float-end btn-sm">Cancel</a>
+                            {{-- <a href="/admin/user/password" class="btn btn-info px-5 me-2 float-start btn-sm">Change Password</a> --}}
+                            <button type="button" class="btn btn-info btn-sm px-5 float-start" data-bs-toggle="modal" data-bs-target="#basicModal">Change Password</button>
                         </div>
                     </div>
                 </form>
@@ -80,5 +82,40 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel1">Change Password</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+            <form action="/admin/user/password/{{ $user->id }}" method="POST">
+                @csrf            
+                <div class="row">
+                  <div class="col mb-3">
+                    <label for="nameBasic" class="form-label">Password</label>
+                    <input type="password" class="form-control @error('password') @enderror" id="password" name="password" required placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" autocomplete="off" value="{{ old('password') }}">
+                    @error('password')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                  </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
 @endsection

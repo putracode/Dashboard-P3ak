@@ -25,13 +25,13 @@
                             @enderror
                         </div>
                     </div>
-                    {{-- <div class="row mb-4">
+                    <div class="row mb-4">
                         <label for="role" class="form-label col-sm-2 col-form-label">Role</label>
                         <div class="col-sm-10">
                             <select class="form-select @error('role') is-invalid @enderror" id="role" name="role">
-                                <option selected disabled></option>
-                                <option value="2">Admin</option>
-                                <option value="1">User</option>
+                                <option selected disabled hidden></option>
+                                <option value="admin">Admin</option>
+                                <option value="user">User</option>
                             </select>
                             @error('role')
                             <div class="invalid-feedback">
@@ -39,7 +39,7 @@
                             </div>
                             @enderror
                         </div>
-                    </div> --}}
+                    </div>
                     <div class="row mb-4">
                         <label class="col-sm-2 col-form-label" for="email">Email</label>
                         <div class="col-sm-10">

@@ -53,6 +53,28 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="/sneat/assets/js/config.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": true,
+        "positionClass": "toast-top-full-width",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "100000",
+        "hideDuration": "100000",
+        "timeOut": "100000",
+        "extendedTimeOut": "100000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+    </script>
     <style>
       *{
         font-family: 'Jost', sans-serif;
@@ -62,7 +84,11 @@
 
   <body>
     <!-- Content -->
-
+    @if (session()->has('error'))
+        <script>
+            toastr.error("{!! Session::get('error') !!}")
+        </script>
+    @endif
     <div class="container-xxl">
       <div class="authentication-wrapper authentication-basic container-p-y">
         <div class="authentication-inner">
@@ -87,7 +113,7 @@
                 <div class="mb-4 form-password-toggle">
                   <div class="d-flex justify-content-between">
                     <label class="form-label" for="password">Password</label>
-                    <a href="auth-forgot-password-basic.html">
+                    <a href="/forgot-password">
                       <small>Forgot Password?</small>
                     </a>
                   </div>
@@ -112,12 +138,16 @@
                 </div>
               </form>
 
-              {{-- <p class="text-center">
-                <span>Don't have an account?</span>
+              <p class="text-center">
+                {{-- <span>Don't have an account?</span>
                 <a href="/register">
                   <span>Create an account</span>
+                </a> --}}
+                <a href="/" class="d-flex align-items-center justify-content-center">
+                  <i class="bx bx-chevron-left scaleX-n1-rtl bx-sm"></i>
+                  Back to home
                 </a>
-              </p> --}}
+              </p>
             </div>
           </div>
           <!-- /Register -->

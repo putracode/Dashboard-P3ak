@@ -27,8 +27,15 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name' => 'Saputra',
-            // 'role' => 'admin',
+            'role' => 'admin',
             'email' => 'saputra@gmail.com',
+            'password' => bcrypt('password')
+        ]);
+
+        User::create([
+            'name' => 'User',
+            'role' => 'user',
+            'email' => 'user@gmail.com',
             'password' => bcrypt('password')
         ]);
 
@@ -69,42 +76,6 @@ class DatabaseSeeder extends Seeder
             'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
         ]);
         Highlight::create([
-            'title' => 'Dolorem ist laurent',
-            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
-        ]);
-        Aplikasi::create([
-            'title' => 'Dolorem ist laurent',
-            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
-        ]);
-        Aplikasi::create([
-            'title' => 'Dolorem ist laurent',
-            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
-        ]);
-        Aplikasi::create([
-            'title' => 'Dolorem ist laurent',
-            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
-        ]);
-        Aplikasi::create([
-            'title' => 'Dolorem ist laurent',
-            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
-        ]);
-        Aplikasi::create([
-            'title' => 'Dolorem ist laurent',
-            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
-        ]);
-        Aplikasi::create([
-            'title' => 'Dolorem ist laurent',
-            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
-        ]);
-        Aplikasi::create([
-            'title' => 'Dolorem ist laurent',
-            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
-        ]);
-        Aplikasi::create([
-            'title' => 'Dolorem ist laurent',
-            'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
-        ]);
-        Aplikasi::create([
             'title' => 'Dolorem ist laurent',
             'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
         ]);

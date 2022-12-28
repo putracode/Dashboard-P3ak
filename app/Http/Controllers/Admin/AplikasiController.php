@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Aplikasi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class AplikasiController extends Controller
 {
@@ -39,7 +40,12 @@ class AplikasiController extends Controller
         $validasi = $this->validate($request,[
             'title' => ['required'],
             'url' => ['required'],
+            // 'icon' => ['required'],
         ]);
+
+        // if($request->file('icon')){
+        //     $validasi['icon'] = $request->file('icon')->store('icon','public');
+        // }
 
         Aplikasi::create($validasi);
         return redirect('/admin/aplikasi')->with('success','Data added succesfully!');
@@ -79,9 +85,17 @@ class AplikasiController extends Controller
         $validasi = $this->validate($request,[
             'title' => ['required'],
             'url' => ['required'],
+            // 'icon' => ['image']
         ]);
 
-        Aplikasi::where('id',$request->id)->update($validasi);
+        // if($request->file('icon')){
+        //     if($request->lama){
+        //         Storage::disk('public')->delete($aplikasi->icon);
+        //     }
+        //     $validasi['icon'] = $request->file('icon')->store('icon','public');
+        // }
+
+        Aplikasi::where('id',$aplikasi->id)->update($validasi);
         return redirect('/admin/aplikasi')->with('success','Data update succesfully!');
     }
 
@@ -92,7 +106,13 @@ class AplikasiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Aplikasi $aplikasi)
-    {
+    {   
+        
+        if($aplikasi->icon){
+            // Storage::delete($aplikasi->icon);
+            Storage::disk('public')->delete($aplikasi->icon);
+        }
+
         Aplikasi::destroy($aplikasi->id);
         return redirect('/admin/aplikasi')->with('success','Data deleted succesfully!');
     }

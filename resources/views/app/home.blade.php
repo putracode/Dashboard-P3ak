@@ -56,32 +56,42 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.0/css/lg-thumbnail.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.0/css/lg-fullscreen.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.0/css/lg-autoplay.min.css">
+
+    <style>
+      
+    </style>
   </head>
 
   <body>
     
     <div class="container-fluid shadow-sm  mb-3">
 
-      <div class="row d-flex justify-content-around align-items-center">
+      <div class="row d-flex justify-content-between align-items-center">
         <div class="col-md-4">
           <img src="/img/logo.png" alt="logo" class="logo" width="250px" height="100px">
         </div>
         <div class="col-md-4 d-flex justify-content-center align-items-center">
           <h3 style="font-weight: bold; color: #00ADEF;">DASHBOARD P3AK</h3>
         </div>
-        <div class="col-md-4 d-flex justify-content-end ">
-          @guest
+        <div class="col-md-4 d-flex justify-content-end">
+          @can('user')          
+            <a href="/login" class="btn btn-primary px-5">Admin</a>
+          @endcan
+          @can('admin')
+            <a href="/admin/dashboard" class="btn btn-primary px-5">Admin</a>
+          @endcan
+          {{-- @guest
             <a href="/login" class="btn btn-primary px-5">Admin</a>
           @endguest
           @auth
             <a href="/admin/dashboard" class="btn btn-primary px-5">Admin</a>
-          @endauth
+          @endauth --}}
         </div>
       </div>
       <div class="row d-flex justify-content-center py-3">
         <div class="col-md-12 d-flex justify-content-center">
           @foreach ($kategori as $row)            
-            <button class="me-3 linkmodal" data-id="{{ $row->id }}">{{ $row->kategori }}</button>
+            <button class="me-3 linkmodal" data-id="{{ $row->id }}"><span class="pill">{{ $row->kategori }}</span></button>
           @endforeach
         </div>
         {{--  --}}
@@ -90,7 +100,7 @@
     <div class="container-fluid">      
       <div class="row">
         <div class="col-md-5">
-          <div class="galeriContainer" id="galeriContainer" style="width: 100%; height: 350px; border-radius: 10px,10px">
+          <div class="galeriContainer" id="galeriContainer" style="width: 100%; height: 350px">
             @foreach ($galeri as $row)            
               <a data-lg-size="" class="gallery-item" data-src="{{ asset('storage/' . $row->foto1) }}" data-sub-html="{{ $row->caption1 }}">
     
@@ -120,9 +130,9 @@
                   @foreach ($highlight as $row)
                   <div class="col-md-6 d-flex justify-content-center align-items-center">
                     @if (file_exists('storage/' . $row->url))
-                      <li class="mb-3 mt-3 text-center" style="list-style: none;"><a href="{{ asset('storage/' . $row->url) }}" target="_blank">{{ $row->title }}</a></li>
+                      <li class="mb-3 mt-3 text-center" style="list-style: none;"><a href="{{ asset('storage/' . $row->url) }}" target="_blank" class="highlight-a">{{ $row->title }}</a></li>
                     @else
-                      <li class="mb-3 mt-3 text-center" style="list-style: none;"><a href="{{ $row->url }}" target="_blank">{{ $row->title }}</a></li>
+                      <li class="mb-3 mt-3 text-center" style="list-style: none;"><a href="{{ $row->url }}" target="_blank" class="highlight-a">{{ $row->title }}</a></li>
                     @endif
                   </div>
                   @endforeach
@@ -133,20 +143,20 @@
         </div>
         <div class="col-md-3">
           <div class="card mb-4" >
-            <div class="card-header">
+            <div class="card-header" style="background: #00ADEF">
 
-              <h5 class="card-title text-center">Link Aplikasi</h5>
+              <h5 class="card-title text-center m-0" style="color: white"><i class='bx bx-globe me-2' ></i>Link Aplikasi</h5>
             </div>
             <div class="card-body">
               <ul class="list-group list-group-flush">
                 <div class="row">
                   @foreach ($aplikasi as $row)
-                      <div class="col-md-4 d-flex justify-content-center align-items-center mb-4 mt-4">
-                        <a href="{{ $row->url }}" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;" data-bs-toggle="tooltip"
-                          data-bs-offset="0,4"
-                          data-bs-placement="top"
-                          data-bs-html="true"
-                          title="<span>{{ $row->title }}</span>"><path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"></path></svg>  </a> 
+                      <div class="col-md-4 d-flex justify-content-center align-items-center mb-3 mt-3">
+                        {{-- <a href="{{ $row->url }}"><img src="{{ asset('storage/' . $row->icon) }}" alt class="icon-aplikasi" style="object-fit: cover"></a>                           --}}
+                        {{-- <div class="icon-circle" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="<span>{{ $row->title }}</span>">
+                          <img src="/img/logo.png" alt="" width="100%">
+                        </div> --}}
+                        <a href="{{ $row->url }}" class="icon-circle" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="<span>{{ $row->title }}</span>" target="_blank"><img src="/img/logo.png" alt="" width="100%"></a>
                       </div>
                   @endforeach
                 </div>
@@ -177,6 +187,7 @@
         </div>
       </div>
     </div>
+
 
 
 
@@ -237,6 +248,12 @@
         });
     }
 
+    let icon = $('.icon-circle')
+    for(let i = 1; i <= icon.length; i++)
+    $(icon[i]).on('click', function () {
+      $(this).blur()
+    })
+
     const lgContainer = document.getElementById("galeriContainer");
     const lg = lightGallery(lgContainer, {
       speed: 500,
@@ -245,6 +262,7 @@
       allowMediaOverlap: true,
       showMaximizeIcon: true,
       slideShowAutoplay:true,
+      download: false,  
       plugins: [lgAutoplay]
     });
     lg.openGallery(0);

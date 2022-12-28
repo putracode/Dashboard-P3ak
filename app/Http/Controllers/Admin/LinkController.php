@@ -96,7 +96,8 @@ class LinkController extends Controller
 
         if($request->file('url')){
             if($request->lama){
-                Storage::delete($request->lama);
+                // Storage::delete($request->lama);
+                Storage::disk('public')->delete($request->lama);
             }
             $validasi['url'] = $request->file('url')->store('file','public');
         }
@@ -114,7 +115,8 @@ class LinkController extends Controller
     public function destroy(Link $link)
     {
         if($link->url){
-            Storage::delete($link->url);
+            // Storage::delete($link->url);
+            Storage::disk('public')->delete($link->url);
         }
         link::destroy($link->id);
         return redirect('/admin/link')->with('success','Data successfully deleted!');

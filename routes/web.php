@@ -12,6 +12,8 @@ use App\Http\Controllers\Admin\AplikasiController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HighlightController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,21 +30,29 @@ use App\Http\Controllers\Admin\HighlightController;
 //     return view('auth.login');
 // });
 
-// Route::get('/home', function () {
-//     return view('auth.login');
-// });
+Route::get('/test', function () {
+    return view('auth.password');
+});
 
 route::get('/',[HomeController::class,'index']);
+route::post('/',[HomeController::class,'authenticate']);
 route::get('/modal',[HomeController::class,'modal']);
 route::get('/login',[LoginController::class,'index']);
-route::post('/login',[LoginController::class,'authenticate']);
+route::post('/login',[LoginController::class,'authenticate'])->name('login');
 route::post('/logout',[LoginController::class,'logout']);
 
-route::get('/admin/dashboard',[DashboardController::class,'index']);
+Route::middleware(['auth'])->group(function(){
+    route::get('/admin/dashboard',[DashboardController::class,'index']);
+    route::resource('admin/user',UserController::class);
+    route::post('admin/user/password/{id}',[UserController::class,'password']);
+    route::resource('admin/link',LinkController::class);
+    route::resource('admin/kategori',KategoriController::class);
+    route::resource('admin/galeri',GaleriController::class);
+    route::resource('admin/highlight',HighlightController::class);
+    route::resource('admin/aplikasi',AplikasiController::class);
+});
 
-route::resource('admin/user',UserController::class);
-route::resource('admin/link',LinkController::class);
-route::resource('admin/kategori',KategoriController::class);
-route::resource('admin/galeri',GaleriController::class);
-route::resource('admin/highlight',HighlightController::class);
-route::resource('admin/aplikasi',AplikasiController::class);
+Route::get('/forgot-password',[ForgotPasswordController::class,'getforgotpassword'])->name('getforgotpassword');
+Route::post('/forgot-password',[ForgotPasswordController::class,'postforgotpassword']);
+Route::get('/reset-password/{token}',[ForgotPasswordController::class,'getresetpassword'])->middleware('guest')->name('getresetpassword');
+Route::post('/reset-password/{token}',[ForgotPasswordController::class,'postresetpassword'])->middleware('guest');

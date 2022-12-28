@@ -40,6 +40,7 @@ class UserController extends Controller
             'name' => ['required'],
             'email' => ['required','email','unique:users'],
             'password' => ['required'],
+            'role' => ['required'],
         ]);
 
         $validasi['password'] = bcrypt($validasi['password']);
@@ -99,4 +100,15 @@ class UserController extends Controller
         User::destroy($user->id);
         return redirect('/admin/user')->with('success','User successfully deleted!');
     }
+
+    public function password(Request $request, $id){
+        $validasi = $this->validate($request,[
+            'password' => ['required']
+        ]);
+
+        $validasi['password'] = bcrypt($validasi['password']);
+        User::where('id',$id)->update($validasi);
+        return redirect('/admin/user')->with('success','Password update successfully!');
+    }
+
 }

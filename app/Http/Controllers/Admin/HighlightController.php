@@ -88,7 +88,7 @@ class HighlightController extends Controller
 
         if($request->file('url')){
             if($request->lama){
-                Storage::delete($request->lama);
+                Storage::disk('public')->delete($request->lama);
             }
             $validasi['url'] = $request->file('url')->store('file','public');
         }
@@ -104,7 +104,12 @@ class HighlightController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Highlight $highlight)
-    {
+    {   
+        if($highlight->url){
+            // Storage::delete($highlight->url);
+            Storage::disk('public')->delete($highlight->url);
+        }
+
         Highlight::destroy($highlight->id);
         return redirect('/admin/highlight')->with('success','Data succesfully deleted!');
     }

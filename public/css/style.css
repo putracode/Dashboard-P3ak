@@ -3,7 +3,6 @@
   padding: 0;
   /* font-family: 'Jost', sans-serif; */
   /* border: 1px solid; */
-
 }
 
 .linkmodal{
@@ -17,6 +16,69 @@
 #modal-links .modal-body ul li{
   margin-bottom: 10px;
 }
+
+/* .icon-aplikasi{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+  line-height: 50px;
+} */
+
+.icon-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F9F9F9;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.icon-circle:hover {
+  /* background-color: #00ADEF; */
+  border: 1px solid #00ADEF;
+  color: #333;
+}
+
+.btn-primary{
+  background-color: #00ADEF;
+}
+
+.pill {
+  display: inline-block;
+  padding: 0.5em 1em;
+  border: 1.4px solid #00ADEF;
+  border-radius: 4px;
+  background-color: #F5F5F9;
+  color: #566A7F;
+  text-decoration: none;
+}
+
+.pill:hover {
+  background-color: #00ADEF;
+  color: white;
+}
+
+.pill.active {
+  background-color: #333;
+  color: #fff;
+}
+
+.highlight-a{
+  color: #566A7F;
+}
+.highlight-a:hover{
+  color: #00ADEF;
+}
+
 
 
 

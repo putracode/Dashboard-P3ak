@@ -24,26 +24,7 @@
                         </div>
                     </div>
 
-                    <div class="row mb-4">
-                        <label for="type" class="form-label col-sm-2 col-form-label">Type</label>
-                        <div class="col-sm-10">
-                            <select class="form-select" id="type">
-                                @if (old('type') == 'url')
-                                    <option value="url" selected>Link URL</option>
-                                    <option value="file">Upload File</option>
-                                @elseif (old('type') == 'file')
-                                    <option value="url">Link URL</option>
-                                    <option value="file" selected>Upload File</option>
-                                @else
-                                    <option selected disabled hidden value="0"></option>
-                                    <option value="url">Link URL</option>
-                                    <option value="file">Upload File</option>
-                                @endif
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row mb-4" style="visibility: hidden" id="input">
+                    <div class="row mb-4" id="input">
                         <label class="col-sm-2 col-form-label" for="url" id="labelInput">URL</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control @error('url') is-invalid @enderror" id="url" name="url" required value="{{ old('url') }}" autocomplete="off">
@@ -54,6 +35,19 @@
                             @enderror
                         </div>
                     </div>
+
+                    {{-- <div class="row mb-4">
+                        <label class="col-sm-2 col-form-label" for="icon">Icon</label>
+                        <div class="col-sm-10">
+                            <img class="img-preview mb-3 img-fluid rounded-2" style="width: 250px; height: 150px; display: block; object-fit: cover">
+                            <input type="file" class="form-control @error('icon') is-invalid @enderror" id="icon" name="icon" required value="{{ old('icon') }}" autocomplete="off" onchange="previewImage()">
+                            @error('icon')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div> --}}
 
                     <div class="row justify-content-end">
                         <div class="col-sm-10">
@@ -68,16 +62,14 @@
 </div>
 
 <script>
-    document.querySelector('#type').addEventListener('change', inputChange);
+    function previewImage(){
+        const image = document.querySelector("#icon");
+        const imgPreview = document.querySelector(".img-preview");
 
-    function inputChange(){
-        let url = document.querySelector('#url');
-        let input = document.querySelector('#input');
-        let labelInput = document.querySelector('#labelInput');
+        imgPreview.style.display = "block";
 
-        this.value == '0' ? input.style.visibility = 'hidden' : input = input.style.visibility = 'visible';
-        this.value == 'url' ? url.type = 'text' : url = url.type = 'file';
-        this.value == 'url' ? labelInput.innerHTML = 'URL' : url = labelInput.innerHTML = 'File';
+        const blob = URL.createObjectURL(image.files[0]);
+        imgPreview.src = blob;
     }
 </script>
 @endsection

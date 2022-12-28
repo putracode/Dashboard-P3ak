@@ -26,6 +26,7 @@
                     <th>ID</th>
                     <th>Title</th>
                     <th>Url</th>
+                    {{-- <th>Icon</th> --}}
                     <th>Action</th>
                 </tr>
             </thead>
@@ -41,7 +42,9 @@
                     @else
                         <td><a target="_blank" href="{{ $row->url }}">{{ $row->url }}</a></td>
                     @endif
-  
+
+                    {{-- <td><img src="{{ asset('storage/' . $row->icon) }}" style="width: 100px; object-fit: cover;" alt=""></td> --}}
+
                     <td>
                         <a href="/admin/aplikasi/{{ $row->id }}/edit">
                             <button type="button" class="btn btn-icon  btn-warning ">

@@ -117,31 +117,31 @@ class GaleriController extends Controller
 
         if($request->file('foto1')){
             if($request->lama1){
-                Storage::delete($request->lama1);
+                Storage::disk('public')->delete($request->lama1);
             }
             $validasi['foto1'] = $request->file('foto1')->store('galeri','public');
         }
         if($request->file('foto2')){
             if($request->lama2){
-                Storage::delete($request->lama2);
+                Storage::disk('public')->delete($request->lama2);
             }
             $validasi['foto2'] = $request->file('foto2')->store('galeri','public');
         }
         if($request->file('foto3')){
             if($request->lama3){
-                Storage::delete($request->lama3);
+                Storage::disk('public')->delete($request->lama3);
             }
             $validasi['foto3'] = $request->file('foto3')->store('galeri','public');
         }
         if($request->file('foto4')){
             if($request->lama4){
-                Storage::delete($request->lama4);
+                Storage::disk('public')->delete($request->lama4);
             }
             $validasi['foto4'] = $request->file('foto4')->store('galeri','public');
         }
         if($request->file('foto5')){
             if($request->lama5){
-                Storage::delete($request->lama5);
+                Storage::disk('public')->delete($request->lama5);
             }
             $validasi['foto5'] = $request->file('foto5')->store('galeri','public');
         }
@@ -159,19 +159,19 @@ class GaleriController extends Controller
     public function destroy(Galeri $galeri)
     {
         if($galeri->foto1){
-            Storage::delete($galeri->foto1);
+            Storage::disk('public')->delete($galeri->foto1);
         }
         if($galeri->foto2){
-            Storage::delete($galeri->foto2);
+            Storage::disk('public')->delete($galeri->foto2);
         }
         if($galeri->foto3){
-            Storage::delete($galeri->foto3);
+            Storage::disk('public')->delete($galeri->foto3);
         }
         if($galeri->foto4){
-            Storage::delete($galeri->foto4);
+            Storage::disk('public')->delete($galeri->foto4);
         }
         if($galeri->foto5){
-            Storage::delete($galeri->foto5);
+            Storage::disk('public')->delete($galeri->foto5);
         }
 
         galeri::destroy($galeri->id);

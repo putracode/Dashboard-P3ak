@@ -23,7 +23,7 @@ class LoginController extends Controller
             return redirect()->intended('/admin/dashboard');
         }
 
-        return back()->with('loginError','Login Failed!');
+        return back()->with('error','Login Failed!');
     }
 
     public function logout(Request $request){
@@ -32,6 +32,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }

@@ -26,6 +26,7 @@
                     <th>ID</th>
                     <th>Nama Lengkap</th>
                     <th>Email</th>
+                    <th>Role</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -36,6 +37,7 @@
 
                     <td>{{ $row->name }}</td>
                     <td>{{ $row->email }}</td>
+                    <td>{{ $row->role }}</td>
                     <td>
                         <a href="/admin/user/{{ $row->id }}/edit">
                             <button type="button" class="btn btn-icon  btn-warning ">
