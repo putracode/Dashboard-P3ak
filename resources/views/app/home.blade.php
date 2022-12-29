@@ -71,7 +71,7 @@
           <img src="/img/logo.png" alt="logo" class="logo" width="250px" height="100px">
         </div>
         <div class="col-md-4 d-flex justify-content-center align-items-center">
-          <h3 style="font-weight: bold; color: #00ADEF;">DASHBOARD P3AK</h3>
+          <h3 style="font-weight: bold; color: #00ADEF;">DASHBOARD {{ $dashboard->name}}</h3>
         </div>
         <div class="col-md-4 d-flex justify-content-end">
           @can('user')          

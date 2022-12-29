@@ -43,6 +43,7 @@ route::post('/logout',[LoginController::class,'logout']);
 
 Route::middleware(['auth'])->group(function(){
     route::get('/admin/dashboard',[DashboardController::class,'index']);
+    route::post('/admin/dashboard/{id}',[DashboardController::class,'update']);
     route::resource('admin/user',UserController::class);
     route::post('admin/user/password/{id}',[UserController::class,'password']);
     route::resource('admin/link',LinkController::class);

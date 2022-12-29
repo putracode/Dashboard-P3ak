@@ -9,6 +9,7 @@ use App\Models\Kategori;
 use App\Models\Highlight;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Dashboard;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Console\Input\Input;
 
@@ -18,7 +19,7 @@ class HomeController extends Controller
         if( auth()->guest() ){
             return view('auth.password');
         }else{
-            return view('app.home',['link' => Link::all(), 'kategori' => Kategori::all(), 'galeri' => Galeri::all(), 'highlight' => Highlight::all(), 'aplikasi' => Aplikasi::all()]);
+            return view('app.home',['link' => Link::all(), 'kategori' => Kategori::all(), 'galeri' => Galeri::all(), 'highlight' => Highlight::all(), 'aplikasi' => Aplikasi::all(), 'dashboard' => Dashboard::where('id','1')->first()]);
         }
     }
 

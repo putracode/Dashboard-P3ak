@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Aplikasi;
+use App\Models\Dashboard;
 use App\Models\Highlight;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -78,6 +79,10 @@ class DatabaseSeeder extends Seeder
         Highlight::create([
             'title' => 'Dolorem ist laurent',
             'url' => 'https://www.studentstutorial.com/laravel/laravel-ajax-retrieve',
+        ]);
+
+        Dashboard::create([
+            'name' => 'P3AK'
         ]);
     }
 }
