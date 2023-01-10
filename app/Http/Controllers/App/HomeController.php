@@ -25,7 +25,7 @@ class HomeController extends Controller
 
     public function authenticate(Request $request){
         $credentials = $request->validate([
-            'email' => ['required'],
+            'name' => ['required'],
             'password' => ['required']
         ]);
 

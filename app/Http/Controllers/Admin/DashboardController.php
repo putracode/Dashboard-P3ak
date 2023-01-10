@@ -18,7 +18,8 @@ class DashboardController extends Controller
         ]);
 
         Dashboard::where('id',$id)->update($validasi);
-        return redirect('/admin/dashboard')->with('success','Dashboard update successfully!');
+        // return redirect('/admin/dashboard')->with('success','Dashboard update successfully!');
+        return redirect('/admin/dashboard');
     }
     public function pdf(Request $request){
         dd($request);

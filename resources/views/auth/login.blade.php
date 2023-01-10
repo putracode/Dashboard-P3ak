@@ -20,7 +20,8 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/sneat/assets/img/favicon/favicon.ico" />
+    {{-- <link rel="icon" type="image/x-icon" href="/sneat/assets/img/favicon/favicon.ico" /> --}}
+    <link href="/img/favicon.jpg" rel="icon">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -95,13 +96,19 @@
           <!-- Register -->
           <div class="card">
             <div class="card-body">
-
-              <h4 class="mb-2 text-center">Welcome to P3AK Dashboard!</h4>
-              <p class="mb-4 text-center">Please sign-in to your account</p>
+              <div class="app-brand justify-content-center mb-4">
+                <a href="index.html" class="app-brand-link gap-2">
+                  <span class="app-brand-logo demo">
+                    <img src="img/logo.png" alt="" width="150" height="65">
+                  </span>
+                </a>
+              </div>
+              {{-- <h4 class="mb-2 text-center">Welcome to {{ $dashboard->name }} Dashboard!</h4> --}}
+              {{-- <p class="mb-4 text-center">Please sign-in to your account</p> --}}
 
               <form id="formAuthentication" class="mb-3" action="/login" method="POST">
                 @csrf
-                <div class="mb-4">
+                <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
                   <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Enter your email" required autofocus autocomplete="off" value="{{ old('email') }}"/>
                   @error('email')
@@ -110,7 +117,7 @@
                     </div>
                   @enderror
                 </div>
-                <div class="mb-4 form-password-toggle">
+                <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
                     <label class="form-label" for="password">Password</label>
                     <a href="/forgot-password">

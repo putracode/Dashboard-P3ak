@@ -32,15 +32,19 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/sneat/assets/img/favicon/favicon.ico" />
+    {{-- <link rel="icon" type="image/x-icon" href="/sneat/assets/img/favicon/favicon.ico" /> --}}
+    <link href="/img/favicon.jpg" rel="icon">
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    {{-- <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet"
-    />
+    /> --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="/sneat/assets/vendor/fonts/boxicons.css" />
@@ -71,17 +75,21 @@
     .authentication-wrapper.authentication-basic .authentication-inner:before{
       background: none !important
     }
+
+    *{
+      font-family: 'Jost', sans-serif;
+    }
     </style>
   </head>
 
-  <body>
+  <body id="vantajs">
     <!-- Content -->
 
     <div class="container-xxl" id="particles-js">
       <div class="authentication-wrapper authentication-basic container-p-y">
         <div class="authentication-inner">
           <!-- Register -->
-          <div class="card">
+          <div class="card shadow">
             <div class="card-body">
 
               {{-- <h4 class="mb-2">Welcome to Sneat! 👋</h4> --}}
@@ -93,7 +101,7 @@
                   <div class="input-group input-group-merge">
                     <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" autocomplete="off" required value="{{ old('password') }}">
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                    <input type="hidden" value="user@gmail.com" name="email">
+                    <input type="hidden" value="User" name="name">
                   </div>
                 </div>
                 <div class="mb-3">
@@ -101,9 +109,9 @@
                 </div>
               </form>
 
-              <div class="text-center">
+              <div class="float-end">
                 <a href="/login" class="d-flex align-items-center justify-content-center">
-                    Login admin
+                    admin
                     <i class="bx bx-chevron-right scaleX-n1-rtl bx-sm"></i>
                 </a>
               </div>
@@ -139,26 +147,32 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
     <script>
       $(document).ready(function(){        
-        VANTA.CLOUDS({
+        VANTA.FOG({
           el: "#vantajs",
           mouseControls: true,
           touchControls: true,
           gyroControls: false,
           minHeight: 200.00,
-          minWidth: 200.00
+          minWidth: 200.00,
+          highlightColor: 0x00adef,
+          midtoneColor: 0x00adef,
+          blurFactor: 0.24,
+          speed: 0.20,
+          zoom: 0.20
         })
       });
-    </script> --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.js" integrity="sha512-BgV3bZfMmUklIZI+dP0SILdmQ0RBY2gxegFFyfgo4Ui56WhKF4Pny9LsV/l96jxDDA+2w47zAXA4IyHo2UT/Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </script>
 
-    <script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.js" integrity="sha512-BgV3bZfMmUklIZI+dP0SILdmQ0RBY2gxegFFyfgo4Ui56WhKF4Pny9LsV/l96jxDDA+2w47zAXA4IyHo2UT/Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+
+    {{-- <script>
       Particles.load('particles-js', 'particlesjs-config.json', function() {
         console.log('callback - particles.js config loaded');
       });
-    </script>
+    </script> --}}
   </body>
 </html>

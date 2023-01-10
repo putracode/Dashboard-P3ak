@@ -81,6 +81,108 @@
 
 
 
+@media screen and (max-width: 575.98px) { 
+  #logo{
+    width:200px; 
+    height:75px;
+  }
+
+  .col-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .col-judul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .col-admin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 576px) {  
+  #logo{
+    width:200px; 
+    height:75px;
+  }
+
+  
+
+  .col-judul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .col-admin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 768px) {  
+  #logo{
+    width:200px; 
+    height:75px;
+  }
+
+  .col-judul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .col-admin{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+}
+
+
+@media screen and (min-width: 992px) {  
+  #logo{
+    width:250px; 
+    height:100px;
+  }
+
+  .col-judul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .col-admin{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+}
+
+
+/* @media screen and (min-width: 1200px) { 
+  #logo{
+    width:250px; 
+    height:100px;
+  }
+}
+
+
+@media screen and (min-width: 1400px) { 
+  #logo{
+    width:250px; 
+    height:100px;
+  }
+} */
 
 
 

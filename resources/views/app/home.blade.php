@@ -19,7 +19,8 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/sneat/assets/img/favicon/favicon.ico" />
+    {{-- <link rel="icon" type="image/x-icon" href="/sneat/assets/img/favicon/favicon.ico" /> --}}
+    <link href="/img/favicon.jpg" rel="icon">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -67,31 +68,26 @@
     <div class="container-fluid shadow-sm  mb-3">
 
       <div class="row d-flex justify-content-between align-items-center">
-        <div class="col-md-4">
-          <img src="/img/logo.png" alt="logo" class="logo" width="250px" height="100px">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-logo">
+          <img src="/img/logo.png" alt="logo" class="logo" id="logo">
         </div>
-        <div class="col-md-4 d-flex justify-content-center align-items-center">
-          <h3 style="font-weight: bold; color: #00ADEF;">DASHBOARD {{ $dashboard->name}}</h3>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-judul">
+          <h3 style="font-weight: bold; color: #00ADEF; white-space: nowrap">DASHBOARD {{ $dashboard->name}}</h3>
         </div>
-        <div class="col-md-4 d-flex justify-content-end">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-admin">
           @can('user')          
             <a href="/login" class="btn btn-primary px-5">Admin</a>
           @endcan
           @can('admin')
             <a href="/admin/dashboard" class="btn btn-primary px-5">Admin</a>
           @endcan
-          {{-- @guest
-            <a href="/login" class="btn btn-primary px-5">Admin</a>
-          @endguest
-          @auth
-            <a href="/admin/dashboard" class="btn btn-primary px-5">Admin</a>
-          @endauth --}}
+
         </div>
       </div>
       <div class="row d-flex justify-content-center py-3">
-        <div class="col-md-12 d-flex justify-content-center">
+        <div class="col-md-12 d-flex justify-content-center flex-wrap">
           @foreach ($kategori as $row)            
-            <button class="me-3 linkmodal" data-id="{{ $row->id }}"><span class="pill">{{ $row->kategori }}</span></button>
+            <button class="me-2 linkmodal mb-2" data-id="{{ $row->id }}"><span class="pill" style="white-space: nowrap">{{ $row->kategori }}</span></button>
           @endforeach
         </div>
         {{--  --}}
@@ -99,7 +95,7 @@
     </div>
     <div class="container-fluid">      
       <div class="row">
-        <div class="col-md-5">
+        <div class="col-xl-5 col-lg-6 col-md-6 mb-3">
           <div class="galeriContainer" id="galeriContainer" style="width: 100%; height: 350px">
             @foreach ($galeri as $row)            
               <a data-lg-size="" class="gallery-item" data-src="{{ asset('storage/' . $row->foto1) }}" data-sub-html="{{ $row->caption1 }}">
@@ -120,7 +116,7 @@
             @endforeach
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-xl-4 col-lg-6 col-md-6">
           <div class="card mb-4">
             <div class="card-body">
               <h5 class="card-title text-center">Highlight</h5>
@@ -128,7 +124,7 @@
                 <div class="row">
 
                   @foreach ($highlight as $row)
-                  <div class="col-md-6 d-flex justify-content-center align-items-center">
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-6 d-flex justify-content-center align-items-center">
                     @if (file_exists('storage/' . $row->url))
                       <li class="mb-3 mt-3 text-center" style="list-style: none;"><a href="{{ asset('storage/' . $row->url) }}" target="_blank" class="highlight-a">{{ $row->title }}</a></li>
                     @else
@@ -141,8 +137,8 @@
             </div>
           </div>
         </div>
-        <div class="col-md-3">
-          <div class="card mb-4" >
+        <div class="col-xl-3 col-lg-6 col-md-6">
+          <div class="card mb-4">
             <div class="card-header" style="background: #00ADEF">
 
               <h5 class="card-title text-center m-0" style="color: white"><i class='bx bx-globe me-2' ></i>Link Aplikasi</h5>
@@ -151,12 +147,12 @@
               <ul class="list-group list-group-flush">
                 <div class="row">
                   @foreach ($aplikasi as $row)
-                      <div class="col-md-4 d-flex justify-content-center align-items-center mb-3 mt-3">
+                      <div class="col-lg-4 col-md-6 col-sm-6 col-6 d-flex justify-content-center align-items-center mb-3 mt-3">
                         {{-- <a href="{{ $row->url }}"><img src="{{ asset('storage/' . $row->icon) }}" alt class="icon-aplikasi" style="object-fit: cover"></a>                           --}}
                         {{-- <div class="icon-circle" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="<span>{{ $row->title }}</span>">
                           <img src="/img/logo.png" alt="" width="100%">
                         </div> --}}
-                        <a href="{{ $row->url }}" class="icon-circle" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="<span>{{ $row->title }}</span>" target="_blank"><img src="/img/logo.png" alt="" width="100%"></a>
+                        <a href="{{ $row->url }}" class="icon-circle" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="<span>{{ $row->title }}</span>" target="_blank" style="background-image: url('/img/logo.png'); background-size: contain; background-repeat: no-repeat; background-position: center;')"></a>
                       </div>
                   @endforeach
                 </div>

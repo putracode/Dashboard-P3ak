@@ -36,12 +36,17 @@ Route::get('/test', function () {
 
 route::get('/',[HomeController::class,'index']);
 route::post('/',[HomeController::class,'authenticate']);
-route::get('/modal',[HomeController::class,'modal']);
+route::get('/modal',[HomeController::class,'modal'])->middleware('auth');
 route::get('/login',[LoginController::class,'index']);
 route::post('/login',[LoginController::class,'authenticate'])->name('login');
 route::post('/logout',[LoginController::class,'logout']);
 
-Route::middleware(['auth'])->group(function(){
+Route::get('/forgot-password',[ForgotPasswordController::class,'getforgotpassword'])->name('getforgotpassword');
+Route::post('/forgot-password',[ForgotPasswordController::class,'postforgotpassword']);
+Route::get('/reset-password/{token}',[ForgotPasswordController::class,'getresetpassword'])->middleware('guest')->name('getresetpassword');
+Route::post('/reset-password/{token}',[ForgotPasswordController::class,'postresetpassword'])->middleware('guest');
+
+Route::middleware(['auth','admin'])->group(function(){
     route::get('/admin/dashboard',[DashboardController::class,'index']);
     route::post('/admin/dashboard/{id}',[DashboardController::class,'update']);
     route::resource('admin/user',UserController::class);
@@ -53,7 +58,3 @@ Route::middleware(['auth'])->group(function(){
     route::resource('admin/aplikasi',AplikasiController::class);
 });
 
-Route::get('/forgot-password',[ForgotPasswordController::class,'getforgotpassword'])->name('getforgotpassword');
-Route::post('/forgot-password',[ForgotPasswordController::class,'postforgotpassword']);
-Route::get('/reset-password/{token}',[ForgotPasswordController::class,'getresetpassword'])->middleware('guest')->name('getresetpassword');
-Route::post('/reset-password/{token}',[ForgotPasswordController::class,'postresetpassword'])->middleware('guest');
